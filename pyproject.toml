@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fabula-ultima-character-workshop"
+version = "0.1.0"
+description = "Standalone Fabula Ultima character creation workshop with optional local portrait generation."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "cunfu" }]
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=8,<9"]
+package = ["pyinstaller>=6,<7"]
+
+[project.scripts]
+fu-character-workshop = "fu_gm.character_workshop_app:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.package-data]
+fu_gm = ["web/**/*", "workflows/*"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+norecursedirs = [".git", ".venv", ".pytest_cache", "build", "release"]
